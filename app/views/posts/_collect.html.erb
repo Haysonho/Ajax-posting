@@ -1,0 +1,7 @@
+<% if current_user # 有登入才可以按讚 %>
+  <% if post.find_collect(current_user) %>
+    <%= link_to "取消收藏", cancelcollect_post_path(post), :method => :post, :remote => true, :class => "btn btn-danger" %>
+  <% else %>
+    <%= link_to "❤", collect_post_path(post), :method => :post, :remote => true, :class => "btn btn-info" %>
+  <% end %>
+  <% end %>

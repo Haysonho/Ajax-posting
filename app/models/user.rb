@@ -1,6 +1,7 @@
 class User < ApplicationRecord
       has_many :posts
-
+      has_many :collects, :dependent => :destroy
+      has_many :collected_posts, :through => :collects, :source => :post
       has_many :likes, :dependent => :destroy
       has_many :liked_posts, :through => :likes, :source => :post
     def display_name

@@ -20,6 +20,19 @@ class PostsController < ApplicationController
      render "like"
    end
 
+   def collect
+        @post = Post.find(params[:id])
+        unless @post.find_collect(current_user)  # 如果已经收藏过了，就略过不再新增
+          Collect.create( :user => current_user, :post => @post)
+        end
+      end
+
+      def cancelcollect
+        @post = Post.find(params[:id])
+        cancelcollect = @post.find_collect(current_user)
+        cancelcollect.destroy
+        render "collect"
+      end
   def create
     @post = Post.new(post_params)
     @post.user = current_user
