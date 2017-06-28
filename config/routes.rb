@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     member do
       post "like" => "posts#like"
       post "unlike" => "posts#unlike"
+      post "toggle_flag" => "posts#toggle_flag"
       post "collect" => "posts#collect"
       post "cancelcollect" => "posts#cancelcollect"
+      post "rate" => "posts#rate"
     end
   end
 
